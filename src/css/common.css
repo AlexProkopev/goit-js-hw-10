@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Стили для контейнера */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Заголовок */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Стили для выпадающего списка */
+.breed-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Стили для кнопки */
+#filter-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#filter-button:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для загрузки и ошибки */
+.is-hidden {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Стили для отображения информации о кошках */
+.cat-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.cat-info.breed_selector {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Стили для заголовка */
+.title-cat {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Стили для изображения */
+.img-adaptation {
+  max-width: 400px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
+/* Стили для текста описания */
+.description-text {
+  font-size: 25px;
+  color: #555;
+  line-height: 1.5;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
