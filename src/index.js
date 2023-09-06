@@ -1,21 +1,20 @@
 import fetchBreeds from './cat-api';
 import { fetchCatByBreed } from './cat-api';
+import { ELEMENTS_REFS } from "./refs-obj";
 
 
 //* Рендер опций в Select
 fetchBreeds().then(data => renderListBreads(data));
 
 function renderListBreads(data) {
-  const bread_select_ref = document.querySelector('.breed-select');
   const renderListOptions = data
-    .map(({ id, name }) => {
-      return `
+    .map(({ id, name }) => 
+    `
     <option value="${id}">${name}</option>
-    `;
-    })
+    `)
     .join(' ');
 
-  bread_select_ref.insertAdjacentHTML('beforeend', renderListOptions);
+  ELEMENTS_REFS.breedSelect.insertAdjacentHTML('beforeend', renderListOptions);
 }
 
 //* Получение обьеkта по ID

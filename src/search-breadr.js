@@ -1,6 +1,4 @@
-export function searchBreadr(array) {
-  const formRef = document.querySelector(".container")
-  const myObj = array.filter(el => el.id === formRef.elements.select.value);
-  console.log(myObj);
-  return myObj;
-}
+import { ELEMENTS_REFS } from "./refs-obj";
+
+export const searchBreadr = (array) => array.filter(el => el.id === ELEMENTS_REFS.form.elements.select.value);
+  

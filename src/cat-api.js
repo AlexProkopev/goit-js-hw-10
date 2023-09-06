@@ -1,6 +1,7 @@
 
 import { renderList } from "./render-list";
 import { searchBreadr } from "./search-breadr";
+import { ELEMENTS_REFS } from "./refs-obj";
 
 export default function fetchBreeds() {
   const url = `https://api.thecatapi.com/v1/breeds`;
@@ -16,12 +17,11 @@ export default function fetchBreeds() {
 
 
 export function fetchCatByBreed(breedId) {
-  const loader = document.querySelector(".loader")
-  const error = document.querySelector(".error")
+ 
+  ELEMENTS_REFS.loader.classList.remove("is-hidden")
+  ELEMENTS_REFS.error.classList.add('is-hidden');
+  ELEMENTS_REFS.form.classList.add('is-hidden');
 
-
-  loader.classList.remove("is-hidden")
-  error.classList.add('is-hidden');
 
  const api_key = `live_hHCtsCLJtndMuOis97Pz9si1COQaL3rvVkJbNM03kRXvkhWmjsLXymUqgDN1g7Ud`;
   const HHTP_DATA = `https://api.thecatapi.com/v1/breeds`;
@@ -32,16 +32,15 @@ export function fetchCatByBreed(breedId) {
       breed_ids: breedId,
     },
   })
-    .then(responsiv => {
-      return responsiv.json();
-    })
+    .then(responsiv => responsiv.json())
     .then(data => {
-      loader.classList.add('is-hidden');
+      ELEMENTS_REFS.loader.classList.add('is-hidden');
+      ELEMENTS_REFS.form.classList.remove('is-hidden');
       renderList(searchBreadr(data))
     })
     .catch(() => {
-      loader.classList.add('is-hidden');
-      error.classList.remove('is-hidden');
+      ELEMENTS_REFS.loader.classList.add('is-hidden');
+      ELEMENTS_REFS.error.classList.remove('is-hidden');
     });
 
 }
