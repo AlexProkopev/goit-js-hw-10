@@ -103,3 +103,9 @@ h1 {
   margin: 0 auto;
   margin-top: 20px;
 }
+
+.loader,
+.error {
+  font-size: 30px;
+  text-align: center;
+}

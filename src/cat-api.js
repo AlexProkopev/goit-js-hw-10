@@ -2,6 +2,7 @@
 import { renderList } from "./render-list";
 import { searchBreadr } from "./search-breadr";
 import { ELEMENTS_REFS } from "./refs-obj";
+console.log(ELEMENTS_REFS);
 
 export default function fetchBreeds() {
   const url = `https://api.thecatapi.com/v1/breeds`;
