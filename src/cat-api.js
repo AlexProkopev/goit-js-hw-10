@@ -2,7 +2,9 @@
 import { renderList } from "./render-list";
 import { searchBreadr } from "./search-breadr";
 import { ELEMENTS_REFS } from "./refs-obj";
-console.log(ELEMENTS_REFS);
+
+import Notiflix from 'notiflix'
+
 
 export default function fetchBreeds() {
   const url = `https://api.thecatapi.com/v1/breeds`;
@@ -41,7 +43,7 @@ export function fetchCatByBreed(breedId) {
     })
     .catch(() => {
       ELEMENTS_REFS.loader.classList.add('is-hidden');
-      ELEMENTS_REFS.error.classList.remove('is-hidden');
+      Notiflix.Notify.failure('Произошла внезапная ошибка')
     });
 
 }
