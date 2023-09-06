@@ -1,4 +1,6 @@
 import fetchCatByBreed from './cat-api.js';
+import renderListBreads from './render-option.js';
+
 
 const formRef = document.querySelector('.container');
 const cat_info = document.querySelector('.cat-info');
@@ -43,23 +45,10 @@ function renderList(array) {
 }
 
 
-
-
 //* Рендер опций на страницу
-
-const bread_select_ref = document.querySelector(".breed-select")
 
 fetchCatByBreed().then((data) => {
   renderListBreads(data)
 })
 
-function renderListBreads(data) {
-  const renderListOptions = data.map(({ id, name }) => {
-    return `
-    <option value="${id}">${name}</option>
-    `
-  }).join(" ")
-  
-  bread_select_ref.insertAdjacentHTML("beforeend", renderListOptions)
-}
 
