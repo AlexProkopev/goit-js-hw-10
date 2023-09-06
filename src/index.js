@@ -1,54 +1,30 @@
-import fetchCatByBreed from './cat-api.js';
-import renderListBreads from './render-option.js';
+import fetchBreeds from './cat-api';
+import { fetchCatByBreed } from './cat-api';
 
 
-const formRef = document.querySelector('.container');
-const cat_info = document.querySelector('.cat-info');
-const loader = document.querySelector('.loader');
-const error = document.querySelector('.error');
+//* Рендер опций в Select
+fetchBreeds().then(data => renderListBreads(data));
 
-function searchData(e) {
-  e.preventDefault();
-  formRef.classList.add('is-hidden');
-  loader.classList.remove('is-hidden');
-  error.classList.add('is-hidden');
-
-  fetchCatByBreed(formRef.elements.select.value)
-    .then(data => {
-      loader.classList.add('is-hidden');
-      formRef.classList.remove('is-hidden');
-
-      searchBreadr(data);
-      renderList(searchBreadr(data));
-    })
-    .catch(() => {
-      loader.classList.add('is-hidden');
-      error.classList.remove('is-hidden');
-    });
-}
-
-formRef.addEventListener('submit', searchData);
-
-function searchBreadr(array) {
-  const myObj = array.filter(el => el.id === formRef.elements.select.value);
-  return myObj;
-}
-
-function renderList(array) {
-  const elementList = `
-    <h1 class="title-cat">${array[0].name}</h1>
-    <img src="${array[0].image.url}" class="img-adaptation">
-    <p class="description-text">${array[0].description}</p>
+function renderListBreads(data) {
+  const bread_select_ref = document.querySelector('.breed-select');
+  const renderListOptions = data
+    .map(({ id, name }) => {
+      return `
+    <option value="${id}">${name}</option>
     `;
+    })
+    .join(' ');
 
-  cat_info.innerHTML = elementList;
+  bread_select_ref.insertAdjacentHTML('beforeend', renderListOptions);
 }
 
+//* Получение обьеkта по ID
 
-//* Рендер опций на страницу
+document.querySelector(".container").addEventListener('change', (e) => {
+    fetchCatByBreed(e.currentTarget.elements.select.value)
+});
 
-fetchCatByBreed().then((data) => {
-  renderListBreads(data)
-})
+
+
 
 
